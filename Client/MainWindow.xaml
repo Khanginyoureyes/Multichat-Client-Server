@@ -1,0 +1,83 @@
+﻿<Window x:Name="Client" x:Class="Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Client"
+        mc:Ignorable="d"
+        WindowState="Normal" Background="Transparent" ResizeMode="NoResize" 
+        WindowStyle="None" AllowsTransparency="True"
+        Title="Client" Height="600" Width="850" Closed="Window_Closed" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--Left Panel-->
+        <Border x:Name="bdMainLeft" Background="#FFD6" CornerRadius="20 0 0 20">
+            <Grid x:Name="Left" Width="285">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <!--Điều hướng-->
+                <ToggleButton x:Name="tgbMenu" Grid.Row="0" Style="{StaticResource ToggleButtonMenu}">
+                    <ToggleButton.Triggers>
+                        <EventTrigger RoutedEvent="ToggleButton.Checked">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="Left" Storyboard.TargetProperty="Width" From="285" To="57" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="Left" Storyboard.TargetProperty="Width" From="57" To="285" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ToggleButton.Triggers>
+                </ToggleButton>
+                
+                <!--Profile-->
+                <StackPanel Grid.Row="1" Width="285">
+                    <TextBlock Text="YOUR PROFILE" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center"/>
+                    <Ellipse x:Name="elAvatar"  Width="100" Height="100" Margin="0 10 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="White"/>
+                    <Label x:Name="lbName" Content="Name" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                    <Label x:Name="lbNationality" Content="Nationality" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        
+        <!--Right Panel-->
+        <Border x:Name="bdMainRight" Grid.Column="1" Background="White" CornerRadius="0 20 20 0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="70"/>
+                </Grid.RowDefinitions>
+                
+                <!--Header-->
+                <TextBlock Text="Chats" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0 0 0"/>
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 5 10 0" Orientation="Horizontal" FlowDirection="RightToLeft" >
+                    <Canvas>
+                        <Button x:Name="btClose" Style="{DynamicResource ButtonClose}" Canvas.Top="0" Click="btClose_Click"/>
+                        <Button x:Name="btMaximize" Style="{DynamicResource ButtonMaximize}" Canvas.Left="30" Click="btMaximize_Click"/>
+                        <Button x:Name="btMinimize" Style="{DynamicResource ButtonMinimize}" Canvas.Left="60" Click="btMinimize_Click"/>
+                    </Canvas>
+                </StackPanel>
+                <!--Khung chat-->
+                <ListView x:Name="lvmessage" Grid.Row="1">
+                </ListView>
+                
+                <!--Phần ghi và gửi tin nhắn-->
+                <TextBox x:Name="tbmessage" Grid.Row="2" Style="{DynamicResource TextBoxMessage}"/>
+                <Button x:Name="btSend" Grid.Row="2" Style="{DynamicResource ButtonSend}" Click="btSend_Click_1"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
