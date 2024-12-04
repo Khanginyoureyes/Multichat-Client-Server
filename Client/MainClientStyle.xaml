@@ -66,7 +66,7 @@
         </Setter>
     </Style>
 
-
+    <!--Button Close-->
     <Style x:Key="ButtonClose" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Height" Value="30"/>
@@ -75,8 +75,23 @@
         <Setter Property="Content" Value="&#xE711;"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
         <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="20 20 20 20" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#FFF5CCCC"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
-
+    
+    <!--Button Reston-->
     <Style x:Key="ButtonMinimize" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Height" Value="30"/>
@@ -85,8 +100,23 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Content" Value="&#xE738;"/>
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="20 20 20 20" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
-
+    
+    <!--Button Minimize-->
     <Style x:Key="ButtonMaximize" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Height" Value="30"/>
@@ -95,13 +125,51 @@
         <Setter Property="Content" Value="1"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="FontFamily" Value="webdings"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="20 20 20 20" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
-
-
-
-
-
+    <!--Textbox Name, Email-->
+    <Style x:Key="TextBoxInformation" TargetType="TextBox">
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border CornerRadius="10" BorderThickness="1" BorderBrush="Black">
+                        <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" Margin="5"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--PasswordBox-->
+    <Style x:Key="PasswordBox" TargetType="PasswordBox">
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="PasswordBox">
+                    <Border CornerRadius="10" BorderThickness="1" BorderBrush="Black">
+                        <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" Margin="5"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 
 

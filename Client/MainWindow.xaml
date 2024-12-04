@@ -15,7 +15,14 @@
         </Grid.ColumnDefinitions>
         
         <!--Left Panel-->
-        <Border x:Name="bdMainLeft" Background="#FFD6" CornerRadius="20 0 0 20">
+        <Border x:Name="bdMainLeft" CornerRadius="20 0 0 20">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#26648E" Offset="0"/>
+                    <GradientStop Color="#4F8FC0" Offset="0.2"/>
+                    <GradientStop Color="#53D2DC" Offset="0.6"/>
+                </LinearGradientBrush>
+            </Border.Background>
             <Grid x:Name="Left" Width="285">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
@@ -71,12 +78,12 @@
                     </Canvas>
                 </StackPanel>
                 <!--Khung chat-->
-                <ListView x:Name="lvmessage" Grid.Row="1">
+                <ListView x:Name="lvmessage" Grid.Row="1" SelectionChanged="lvmessage_SelectionChanged">
                 </ListView>
                 
                 <!--Phần ghi và gửi tin nhắn-->
                 <TextBox x:Name="tbmessage" Grid.Row="2" Style="{DynamicResource TextBoxMessage}"/>
-                <Button x:Name="btSend" Grid.Row="2" Style="{DynamicResource ButtonSend}" Click="btSend_Click_1"/>
+                <Button x:Name="btSend" Grid.Row="2" Style="{DynamicResource ButtonSend}" Click="btSend_Click"/>
             </Grid>
         </Border>
     </Grid>

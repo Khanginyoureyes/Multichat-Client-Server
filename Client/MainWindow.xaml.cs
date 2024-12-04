@@ -25,7 +25,7 @@ namespace Client
             Connect();
         }
 
-        private void btSend_Click_1(object sender, EventArgs e)
+        private void btSend_Click(object sender, EventArgs e)
         {
             if (client != null && client.Connected)
             {
@@ -174,6 +174,11 @@ namespace Client
         }
 
         private void btSend_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void lvmessage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
