@@ -74,6 +74,7 @@ namespace Client
                 return;
             }
             string HoTen = tbname.Text.Trim();
+            string NationNality = cbnationnality.Text.Trim();
             string Gmail = tbemail.Text.Trim();
             string PassWord = tbpassword.Password.Trim();
             string AgainPassWord = tbagainpassword.Password.Trim();          
@@ -110,6 +111,7 @@ namespace Client
                             Tennd = HoTen,
                             Matkhau = PassWord,
                             Email = Gmail,
+                            Nationality = NationNality,
                             Imageuser = Avatar
                         };
                         context.Nguoidungs.Add(NewUser);

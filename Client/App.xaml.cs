@@ -9,6 +9,7 @@ namespace Client
     /// </summary>
     public partial class App : Application
     {
+        public static string IdCurrentUser {  get; set; }
     }
 
 }

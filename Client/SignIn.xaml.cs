@@ -53,6 +53,7 @@ namespace Client
                     var NguoiDung = context.Nguoidungs.FirstOrDefault(u => u.Email == Email && u.Matkhau == PassWord); bool isUserFound = false; // Kiểm tra trạng thái đăng nhập
                     if (NguoiDung != null)
                     {
+                        App.IdCurrentUser = NguoiDung.Mand;// Lưu mã người dùng để dùng cho quá trình cập nhật profile
                         isUserFound = true;
                         MainWindow mainwindow = new MainWindow();
                         mainwindow.Show();

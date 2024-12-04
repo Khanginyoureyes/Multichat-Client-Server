@@ -5,30 +5,75 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Server"
         mc:Ignorable="d"
-        WindowState="Normal" Background="Transparent"
-        Title="Server" Height="720" Width="1080" Closed="Window_Closed">
+        WindowState="Normal" Background="Transparent" ResizeMode="NoResize" 
+        WindowStyle="None" AllowsTransparency="True"
+        Title="Server" Height="600" Width="850" Closed="Window_Closed">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Background="#FFD6" CornerRadius="30 0 0 30">
-            
+        <!--Left Panel-->
+        <Border x:Name="bdMainLeft" CornerRadius="20 0 0 20">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#26648E" Offset="0"/>
+                    <GradientStop Color="#4F8FC0" Offset="0.2"/>
+                    <GradientStop Color="#53D2DC" Offset="0.6"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid x:Name="Left" Width="285">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <!--Điều hướng-->
+                <ToggleButton x:Name="tgbMenu" Grid.Row="0" Style="{StaticResource ToggleButtonMenu}">
+                    <ToggleButton.Triggers>
+                        <EventTrigger RoutedEvent="ToggleButton.Checked">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="Left" Storyboard.TargetProperty="Width" From="285" To="57" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="Left" Storyboard.TargetProperty="Width" From="57" To="285" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ToggleButton.Triggers>
+                </ToggleButton>
+            </Grid>
         </Border>
 
-        <Border Grid.Column="1" Background="White" CornerRadius="0 30 30 0">
-            <Grid x:Name="Server">
+        <!--Right Panel-->
+        <Border x:Name="bdMainRight" Grid.Column="1" Background="White" CornerRadius="0 20 20 0">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="6*"/>
+                    <RowDefinition Height="70"/>
                 </Grid.RowDefinitions>
 
+                <!--Header-->
+                <TextBlock Text="Chats" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0 0 0"/>
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 5 10 0" Orientation="Horizontal" FlowDirection="RightToLeft" >
+                    <Canvas>
+                        <Button x:Name="btClose" Style="{DynamicResource ButtonClose}" Canvas.Top="0" />
+                        <Button x:Name="btMaximize" Style="{DynamicResource ButtonMaximize}" Canvas.Left="30"/>
+                        <Button x:Name="btMinimize" Style="{DynamicResource ButtonMinimize}" Canvas.Left="60"/>
+                    </Canvas>
+                </StackPanel>
+                <!--Khung chat-->
                 <ListView x:Name="lvmessage" Grid.Row="1" >
-                    
                 </ListView>
 
+                <!--Phần ghi và gửi tin nhắn-->
                 <TextBox x:Name="tbmessage" Grid.Row="2" Style="{DynamicResource TextBoxMessage}"/>
                 <Button x:Name="btSend" Grid.Row="2" Style="{DynamicResource ButtonSend}" Click="btSend_Click"/>
             </Grid>

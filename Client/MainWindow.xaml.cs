@@ -11,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Client.Models;
+using System.IO;
 
 namespace Client
 {
@@ -23,6 +25,7 @@ namespace Client
         {
             InitializeComponent();
             Connect();
+            LoadUser();
         }
 
         private void btSend_Click(object sender, EventArgs e)
@@ -172,17 +175,41 @@ namespace Client
         {
             Application.Current.Shutdown();
         }
-
-        private void btSend_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void lvmessage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
         // End: Close, Maximize, Minimize
 
+        // Load profile của user khi đăng nhập
+        private void LoadUser()
+        {
+            Nguoidung CurrentUser = null;
+            using (var context = new MultichatContext())
+            {
+                var user = context.Nguoidungs.ToList();
+                foreach (var item in user)
+                {
+                    if (item.Mand == App.IdCurrentUser)
+                    {
+                        CurrentUser = item;
+                    }
+                }
+            }
+            if (CurrentUser != null)
+            {
+                lbName.Content = CurrentUser.Tennd;
+                lbNationality.Content = CurrentUser.Nationality;
+                BitmapImage bitmap = new BitmapImage();
+                using (MemoryStream stream = new MemoryStream(CurrentUser.Imageuser))
+                {
+                    bitmap.BeginInit();
+                    bitmap.StreamSource = stream;
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmap.EndInit();
+                }
+                elAvatar.Fill = new ImageBrush(bitmap);
+            }
+        }
     }
 }
