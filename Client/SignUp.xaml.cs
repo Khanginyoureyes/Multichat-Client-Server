@@ -160,5 +160,12 @@ namespace Client
                 }
             }
         }
+
+        private void btout_Click(object sender, RoutedEventArgs e)
+        {
+            SignIn signin = new SignIn();
+            signin.Show();
+            this.Close();
+        }
     }
 }

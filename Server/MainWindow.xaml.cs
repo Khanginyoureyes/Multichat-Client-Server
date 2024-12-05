@@ -87,6 +87,8 @@ namespace Server
                         string? message = Deserialize<string>(buffer[..receivedBytes]); // Deserialize với xử lý lỗi
                         if (!string.IsNullOrEmpty(message))
                         {
+                            //Console.WriteLine($"Received: {message}");// thêm
+                            
                             AddMessege(message);
                         }
                     }
@@ -118,7 +120,7 @@ namespace Server
         {
             if (!string.IsNullOrEmpty(tbmessage.Text))
             {
-                client.Send(Serialize(tbmessage.Text));
+                client.Send(Serialize($"Server: {tbmessage.Text}"));
             }
         }
 
@@ -167,6 +169,16 @@ namespace Server
         private void Window_Closed(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void btMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
         }
     }
 }

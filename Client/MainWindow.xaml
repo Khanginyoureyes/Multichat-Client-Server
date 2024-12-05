@@ -26,7 +26,7 @@
             <Grid x:Name="Left" Width="285">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <!--Điều hướng-->
                 <ToggleButton x:Name="tgbMenu" Grid.Row="0" Style="{StaticResource ToggleButtonMenu}">
@@ -52,7 +52,7 @@
                 <!--Profile-->
                 <StackPanel Grid.Row="1" Width="285">
                     <TextBlock Text="YOUR PROFILE" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center"/>
-                    <Ellipse x:Name="elAvatar"  Width="100" Height="100" Margin="0 10 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="White"/>
+                    <Ellipse x:Name="elAvatar"  Width="140" Height="140" Margin="0 10 0 0" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="White"/>
                     <Label x:Name="lbName" Content="Name" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
                     <Label x:Name="lbNationality" Content="Nationality" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
                 </StackPanel>
@@ -69,21 +69,29 @@
                 </Grid.RowDefinitions>
                 
                 <!--Header-->
-                <TextBlock Text="Chats" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0 0 0"/>
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 5 10 0" Orientation="Horizontal" FlowDirection="RightToLeft" >
-                    <Canvas>
-                        <Button x:Name="btClose" Style="{DynamicResource ButtonClose}" Canvas.Top="0" Click="btClose_Click"/>
-                        <Button x:Name="btMaximize" Style="{DynamicResource ButtonMaximize}" Canvas.Left="30" Click="btMaximize_Click"/>
-                        <Button x:Name="btMinimize" Style="{DynamicResource ButtonMinimize}" Canvas.Left="60" Click="btMinimize_Click"/>
-                    </Canvas>
-                </StackPanel>
-                <!--Khung chat-->
-                <ListView x:Name="lvmessage" Grid.Row="1" SelectionChanged="lvmessage_SelectionChanged">
-                </ListView>
+                <Border Background ="#F0F0F0" CornerRadius="0 20 0 0">
+                    <Grid>
+                        <TextBlock Text="Chats" FontSize="40" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0 0 0"/>
+                        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 5 10 0" Orientation="Horizontal" FlowDirection="RightToLeft" >
+                            <Canvas>
+                                <Button x:Name="btClose" Style="{DynamicResource ButtonClose}" Canvas.Top="0" Click="btClose_Click"/>
+                                <Button x:Name="btMaximize" Style="{DynamicResource ButtonMaximize}" Canvas.Left="30" Click="btMaximize_Click"/>
+                                <Button x:Name="btMinimize" Style="{DynamicResource ButtonMinimize}" Canvas.Left="60" Click="btMinimize_Click"/>
+                            </Canvas>
+                        </StackPanel>
+                    </Grid>
+                </Border>
                 
+                <!--Khung chat-->
+                <ListView x:Name="lvmessage" Grid.Row="1"/>
                 <!--Phần ghi và gửi tin nhắn-->
-                <TextBox x:Name="tbmessage" Grid.Row="2" Style="{DynamicResource TextBoxMessage}"/>
-                <Button x:Name="btSend" Grid.Row="2" Style="{DynamicResource ButtonSend}" Click="btSend_Click"/>
+                <Border Grid.Row="2" Background ="#F0F0F0" CornerRadius="0 0 20 0">
+                    <Grid>
+                           <TextBox x:Name="tbmessage"  Style="{DynamicResource TextBoxMessage}"/>
+                        <Button x:Name="btSend" Style="{DynamicResource ButtonSend}" Click="btSend_Click"/>
+                    </Grid>
+                </Border>
+                
             </Grid>
         </Border>
     </Grid>

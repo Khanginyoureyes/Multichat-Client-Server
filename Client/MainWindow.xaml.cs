@@ -118,11 +118,11 @@ namespace Client
         {
             if (!string.IsNullOrWhiteSpace(tbmessage.Text) && client != null && client.Connected)
             {
-                client.Send(Serialize(tbmessage.Text));
+                client.Send(Serialize($"{App.NameCurrentUser}: {tbmessage.Text}"));
             }
             else
             {
-                Console.WriteLine("Socket is closed or not connected.");
+                Console.WriteLine("Socket đã đóng hoặc không thể kết nối");
             }
         }
 
@@ -135,7 +135,7 @@ namespace Client
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Serialize error: {ex.Message}");
+                Console.WriteLine($"Lỗi: {ex.Message}");
                 return Array.Empty<byte>();
             }
         }

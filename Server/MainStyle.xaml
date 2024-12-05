@@ -31,11 +31,13 @@
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="Width" Value="90"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="17"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <!--Thiết lập bo góc cho ButtonSend-->
-                    <Border x:Name="Button_BorderSend" CornerRadius="0 0 20 0" BorderThickness="2" Background="Aqua">
+                    <Border x:Name="Button_BorderSend" CornerRadius="0 0 20 0" BorderThickness="2" Background="#DE3163">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Content="Send"/>
                     </Border>
                 </ControlTemplate>

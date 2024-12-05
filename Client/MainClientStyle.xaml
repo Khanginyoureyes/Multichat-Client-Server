@@ -27,11 +27,13 @@
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="Width" Value="90"/>
         <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="17"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <!--Thiết lập bo góc cho ButtonSend-->
-                    <Border x:Name="Button_BorderSend" CornerRadius="0 0 20 0" BorderThickness="2" Background="Aqua">
+                    <Border x:Name="Button_BorderSend" CornerRadius="0 0 20 0" BorderThickness="2" Background="#DE3163">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Content="Send"/>
                     </Border>
                 </ControlTemplate>
@@ -171,6 +173,29 @@
         </Setter>
     </Style>
 
-
-
+    <!--Button Out-->
+    <Style x:Key="ButtonOut" TargetType="Button">
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Margin" Value="10 10 0 0"/>
+        <Setter Property="Content" Value="&#xE760;"/>
+        <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Opacity" Value="0.8"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="10" Background="Transparent" BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Border.Effect>
+                            <DropShadowEffect Color="Blue" BlurRadius="10" Direction="320" ShadowDepth="5" Opacity="0.5"/>
+                        </Border.Effect>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

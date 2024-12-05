@@ -54,6 +54,7 @@ namespace Client
                     if (NguoiDung != null)
                     {
                         App.IdCurrentUser = NguoiDung.Mand;// Lưu mã người dùng để dùng cho quá trình cập nhật profile
+                        App.NameCurrentUser = NguoiDung.Tennd;
                         isUserFound = true;
                         MainWindow mainwindow = new MainWindow();
                         mainwindow.Show();
