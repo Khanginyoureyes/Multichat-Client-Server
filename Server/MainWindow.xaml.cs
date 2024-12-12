@@ -55,7 +55,7 @@ namespace Server
                 }
                 catch
                 {
-                    IP = new IPEndPoint(IPAddress.Any, 9999);
+                    IP = new IPEndPoint(IPAddress.Any, 6990);
                     server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 }
             });
@@ -85,10 +85,15 @@ namespace Server
                     try
                     {
                         string? message = Deserialize<string>(buffer[..receivedBytes]); // Deserialize với xử lý lỗi
-                        if (!string.IsNullOrEmpty(message))
+                        foreach (Socket item in ListClient)
                         {
-                            //Console.WriteLine($"Received: {message}");// thêm
-                            
+                            if (item != null && item != client)
+                            {
+                                item.Send(Serialize(message));
+                            }
+                        }
+                        if (!string.IsNullOrEmpty(message))
+                        {                            
                             AddMessege(message);
                         }
                     }
@@ -118,7 +123,7 @@ namespace Server
 
         void Send(Socket client)
         {
-            if (!string.IsNullOrEmpty(tbmessage.Text))
+            if (!string.IsNullOrEmpty(tbmessage.Text) && client != null )
             {
                 client.Send(Serialize($"Server: {tbmessage.Text}"));
             }
@@ -179,6 +184,15 @@ namespace Server
         private void btMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        // Di chuyển được cửa sổ
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         }
     }
 }

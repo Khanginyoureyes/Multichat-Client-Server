@@ -3,11 +3,12 @@
   "WorkspaceRootPath": "D:\\VS\\C#\\ProjectMultichatWPF\\ProjectLTTQ_CaNhan\\Client\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CDF4A4BD-3CE9-46B3-8B77-0A6920425DE0}|Client.csproj|d:\\vs\\c#\\projectmultichatwpf\\projectlttq_canhan\\client\\signin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CDF4A4BD-3CE9-46B3-8B77-0A6920425DE0}|Client.csproj|solutionrelative:signin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{CDF4A4BD-3CE9-46B3-8B77-0A6920425DE0}|Client.csproj|d:\\vs\\c#\\projectmultichatwpf\\projectlttq_canhan\\client\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDF4A4BD-3CE9-46B3-8B77-0A6920425DE0}|Client.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EDF137DB-CED4-4733-8534-4926D93B0329}|..\\Server\\Server.csproj|d:\\vs\\c#\\projectmultichatwpf\\projectlttq_canhan\\server\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{CDF4A4BD-3CE9-46B3-8B77-0A6920425DE0}|Client.csproj|d:\\vs\\c#\\projectmultichatwpf\\projectlttq_canhan\\client\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CDF4A4BD-3CE9-46B3-8B77-0A6920425DE0}|Client.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,25 +27,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SignIn.xaml",
-              "DocumentMoniker": "D:\\VS\\C#\\ProjectMultichatWPF\\ProjectLTTQ_CaNhan\\Client\\SignIn.xaml",
-              "RelativeDocumentMoniker": "SignIn.xaml",
-              "ToolTip": "D:\\VS\\C#\\ProjectMultichatWPF\\ProjectLTTQ_CaNhan\\Client\\SignIn.xaml",
-              "RelativeToolTip": "SignIn.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-05T15:10:18.222Z",
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\VS\\C#\\ProjectMultichatWPF\\ProjectLTTQ_CaNhan\\Client\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "D:\\VS\\C#\\ProjectMultichatWPF\\ProjectLTTQ_CaNhan\\Client\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAAAHkAAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T09:27:35.715Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\VS\\C#\\ProjectMultichatWPF\\ProjectLTTQ_CaNhan\\Server\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "..\\Server\\MainWindow.xaml",
-              "ToolTip": "D:\\VS\\C#\\ProjectMultichatWPF\\ProjectLTTQ_CaNhan\\Server\\MainWindow.xaml",
-              "RelativeToolTip": "..\\Server\\MainWindow.xaml",
+              "DocumentMoniker": "D:\\VS\\C#\\ProjectMultichatWPF\\ProjectLTTQ_CaNhan\\Client\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "D:\\VS\\C#\\ProjectMultichatWPF\\ProjectLTTQ_CaNhan\\Client\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-05T14:56:28.855Z",
+              "WhenOpened": "2024-12-12T09:22:50.409Z",
               "EditorCaption": ""
             }
           ]

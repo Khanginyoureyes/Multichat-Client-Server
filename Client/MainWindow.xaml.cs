@@ -28,6 +28,7 @@ namespace Client
             LoadUser();
         }
 
+        // Nút gửi tin nhắn
         private void btSend_Click(object sender, EventArgs e)
         {
             if (client != null && client.Connected)
@@ -44,10 +45,11 @@ namespace Client
         private IPEndPoint? IP;
         private Socket? client;
 
+        // Hàm kết nối sever thông qua IP 127.0.0.1 (địa chỉ cục bộ) và port 6990
         private void Connect()
         {
             IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 6990);
-            client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);// IPv4, TCP, xác định TCP protocol
             try
             {
                 client.Connect(IP);
@@ -58,12 +60,13 @@ namespace Client
                 return;
             }
 
-            Thread listen = new Thread(Receive)
+            Thread listen = new Thread(Receive)// Tạo luồng Thread để liên tục lắng nghe server khi đã kết nối 
             {
-                IsBackground = true
+                IsBackground = true // Cho phép luồng chạy nền
             };
-            listen.Start();
+            listen.Start(); 
         }
+
 
         private new void Close()
         {
@@ -74,19 +77,20 @@ namespace Client
             }
         }
 
+        // Lắng nghe và nhận dữ liệu từ server gửi tới
         private void Receive()
         {
             try
             {
                 while (client != null && client.Connected)
                 {
-                    byte[] buffer = new byte[1024 * 5000];
+                    byte[] buffer = new byte[1024 * 5000]; // Kích thước bộ đệm 5MB, lưu dữ liệu của server
                     int receivedBytes = client.Receive(buffer);
                     if (receivedBytes > 0)
                     {
                         try
                         {
-                            string message = Deserialize<string>(buffer[..receivedBytes]);
+                            string message = Deserialize<string>(buffer[..receivedBytes]);// Giải mã mảng byte thành chuỗi string
                             AddMessage(message);
                         }
                         catch (Exception ex)
@@ -102,11 +106,12 @@ namespace Client
             }
         }
 
+        // Hiển thị dữ liệu lên listview
         private void AddMessage(string message)
         {
             if (!string.IsNullOrEmpty(message))
             {
-                Dispatcher.Invoke(() =>
+                Dispatcher.Invoke(() => // Gửi yêu cầu cho luồng UI Thread cập nhật giao diện
                 {
                     lvmessage.Items.Add(new ListViewItem { Content = message });
                     tbmessage.Clear();
@@ -114,6 +119,7 @@ namespace Client
             }
         }
 
+        // Gửi dữ liệu tin nhắn đã được chuyển đổi thành mảng byte đến server và các clinet khác    
         private void Send()
         {
             if (!string.IsNullOrWhiteSpace(tbmessage.Text) && client != null && client.Connected)
@@ -126,13 +132,14 @@ namespace Client
             }
         }
 
+        // Cắt tin nhắn thành mảng byte để gửi đi
         private static byte[] Serialize(object obj)
         {
             try
             {
-                string jsonString = JsonSerializer.Serialize(obj);
-                return Encoding.UTF8.GetBytes(jsonString);
-            }
+                string jsonString = JsonSerializer.Serialize(obj); // Chuyển đổi đối tượng thành chuổi JSON
+                return Encoding.UTF8.GetBytes(jsonString); // Chuyển đổi chuỗi JSON thành mảng byte
+            } 
             catch (Exception ex)
             {
                 Console.WriteLine($"Lỗi: {ex.Message}");
@@ -140,6 +147,7 @@ namespace Client
             }
         }
 
+        // Tập hợp mảng byte để chuyển đổi thành tin nhắn
         private static T Deserialize<T>(byte[] data)
         {
             string jsonString = Encoding.UTF8.GetString(data);
@@ -175,10 +183,6 @@ namespace Client
         {
             Application.Current.Shutdown();
         }
-        private void lvmessage_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
         // End: Close, Maximize, Minimize
 
         // Load profile của user khi đăng nhập
@@ -209,6 +213,15 @@ namespace Client
                     bitmap.EndInit();
                 }
                 elAvatar.Fill = new ImageBrush(bitmap);
+            }
+        }
+
+        // Di chuyển được cửa sổ
+        private void Client_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
             }
         }
     }
