@@ -20,7 +20,7 @@ public partial class MultichatContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(
-    "Data Source=KHANG\\SQLEXPRESS;Initial Catalog=MULTICHAT;Persist Security Info=True;User ID=TienKhang23520699;Password=khang09022005;Trust Server Certificate=True",
+    "/*Connecting path database*/",
     options => options.EnableRetryOnFailure(
         maxRetryCount: 5,
         maxRetryDelay: TimeSpan.FromSeconds(10),
