@@ -1,1 +1,1 @@
-# ProjectLTTQ_CaNhan
+Tài liệu hỗ trợ trong quá trình học tập và phát triển. 
